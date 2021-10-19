@@ -8,6 +8,7 @@ public class BulletController : MonoBehaviour, IApplyDamage
     public float horizontalBoundary;
     public BulletManager bulletManager;
     public int damage;
+
     
     // Start is called before the first frame update
     void Start()
@@ -20,6 +21,7 @@ public class BulletController : MonoBehaviour, IApplyDamage
     {
         _Move();
         _CheckBounds();
+
     }
 
     private void _Move()
@@ -44,4 +46,6 @@ public class BulletController : MonoBehaviour, IApplyDamage
     {
         return damage;
     }
+
+
 }

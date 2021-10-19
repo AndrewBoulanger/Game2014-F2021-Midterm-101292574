@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     public float xLeftOffset = 2;
 
     [Header("Boundary Check")]
-    public float VerticalBoundary;
+    public float verticalBoundary;
 
     [Header("Player Speed")]
     public float verticalSpeed;
@@ -25,18 +25,13 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D m_rigidBody;
     private Vector3 m_touchesEnded;
 
+
     // Start is called before the first frame update
     void Start()
     {
         m_touchesEnded = new Vector3();
         m_rigidBody = GetComponent<Rigidbody2D>();
 
-        Vector3 worldBounds = Camera.main.ScreenToWorldPoint(Screen.safeArea.size);
-        VerticalBoundary =  worldBounds.y - (GetComponent<SpriteRenderer>().bounds.max.y *0.5f);
-        
-        float cameraBasedX = -worldBounds.x + xLeftOffset;
-        transform.position = new Vector3(cameraBasedX, 0.0f, 0.0f);
-        
     }
 
     // Update is called once per frame
@@ -45,6 +40,7 @@ public class PlayerController : MonoBehaviour
         _Move();
         _CheckBounds();
         _FireBullet();
+
     }
 
      private void _FireBullet()
@@ -104,21 +100,24 @@ public class PlayerController : MonoBehaviour
             m_rigidBody.velocity = Vector2.ClampMagnitude(newVelocity, maxSpeed);
             m_rigidBody.velocity *= 0.99f;
         }
+        
     }
 
     private void _CheckBounds()
     {
         // check right bounds
-        if (transform.position.y >= VerticalBoundary)
+        if (transform.position.y >= verticalBoundary)
         {
-            transform.position = new Vector3(transform.position.x, VerticalBoundary, 0.0f);
+            transform.position = new Vector3(transform.position.x, verticalBoundary, 0.0f);
         }
 
         // check left bounds
-        if (transform.position.y <= -VerticalBoundary)
+        if (transform.position.y <= -verticalBoundary)
         {
-            transform.position = new Vector3(transform.position.x, -VerticalBoundary, 0.0f);
+            transform.position = new Vector3(transform.position.x, -verticalBoundary, 0.0f);
         }
 
     }
+
+
 }

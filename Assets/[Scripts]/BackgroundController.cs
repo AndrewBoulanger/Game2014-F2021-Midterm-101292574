@@ -32,4 +32,5 @@ public class BackgroundController : MonoBehaviour
             _Reset();
         }
     }
+
 }

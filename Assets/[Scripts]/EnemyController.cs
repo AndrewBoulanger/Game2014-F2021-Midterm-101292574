@@ -8,11 +8,14 @@ public class EnemyController : MonoBehaviour
     public float verticalBoundary;
     public float direction;
 
+    public float xRightOffset;
+
     // Update is called once per frame
     void Update()
     {
         _Move();
         _CheckBounds();
+
     }
 
     private void _Move()
@@ -34,4 +37,5 @@ public class EnemyController : MonoBehaviour
             direction = 1.0f;
         }
     }
+ 
 }
