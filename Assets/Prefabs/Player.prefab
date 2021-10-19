@@ -119,9 +119,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletManager: {fileID: 0}
-  xLeftOffset: 2
-  VerticalBoundary: 0
-  verticalSpeed: 0
+  xLeftOffset: 1
+  verticalBoundary: 0
+  verticalSpeed: 2
   maxSpeed: 6
-  verticalTValue: 0
+  verticalTValue: 0.1
   fireDelay: 0.2

@@ -1,9 +1,24 @@
-﻿using System.Collections;
+﻿
+/// File          : PlayerController.cs  
+/// modified by   : Andrew Boulanger 
+/// student num   : 101292574
+/// Last modified : Oct 19, 2021
+/// 
+/// controls background scrolling and reseting when beyond the screen
+/// 
+/// revision history: v2 changed horizontal movement to vertical after switching to landscape mode, all movement is now based on the y axis.
+///
+
+
+
+
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using UnityEditor;
 using UnityEngine;
 
+/// controls player behavior, including movement, shooting and checking screen bounds
 public class PlayerController : MonoBehaviour
 {
     public BulletManager bulletManager;
@@ -43,6 +58,7 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    ///fires a bullet every 60 frames
      private void _FireBullet()
     {
         // delay bullet firing 
@@ -52,6 +68,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    ///moves the player based on touch input
     private void _Move()
     {
         float direction = 0.0f;
@@ -60,6 +77,7 @@ public class PlayerController : MonoBehaviour
         foreach (var touch in Input.touches)
         {
             var worldTouch = Camera.main.ScreenToWorldPoint(touch.position);
+            print(worldTouch);
 
             if (worldTouch.y > transform.position.y)
             {
@@ -76,6 +94,7 @@ public class PlayerController : MonoBehaviour
             m_touchesEnded = worldTouch;
 
         }
+
 
         // keyboard support
         if (Input.GetAxis("Vertical") >= 0.1f) 
@@ -101,8 +120,11 @@ public class PlayerController : MonoBehaviour
             m_rigidBody.velocity *= 0.99f;
         }
         
+        
+
     }
 
+    ///check vertical bounds and clamp player position within them
     private void _CheckBounds()
     {
         // check right bounds
