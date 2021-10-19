@@ -19,8 +19,6 @@ public class EnemyController : MonoBehaviour
     public float verticalBoundary;
     public float direction;
 
-    public float xRightOffset;
-
     // Update is called once per frame
     void Update()
     {

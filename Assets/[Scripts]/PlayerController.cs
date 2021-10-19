@@ -23,8 +23,6 @@ public class PlayerController : MonoBehaviour
 {
     public BulletManager bulletManager;
 
-    public float xLeftOffset = 2;
-
     [Header("Boundary Check")]
     public float verticalBoundary;
 
